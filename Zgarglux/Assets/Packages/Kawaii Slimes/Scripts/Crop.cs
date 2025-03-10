@@ -7,7 +7,6 @@ public class Crop : MonoBehaviour
 {
 
     public GameObject[] growthStages;
-    public float growthTime = 5f;
     private int currentStage = 0;
     private bool isFullyGrown = false;
 
@@ -20,7 +19,7 @@ public class Crop : MonoBehaviour
     {
         while (currentStage < growthStages.Length - 1)
         {
-            yield return new WaitForSeconds(growthTime);
+            yield return new WaitForSeconds(20f);
             currentStage++;
             UpdateCropAppearence();
         }
