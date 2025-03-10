@@ -8,6 +8,11 @@ public class EnemyAI : MonoBehaviour
 
     public SlimeInfos SlimeInfos;
 
+    public float impulsionForce;
+    public int damages;
+    public float attackDuration;
+    private float attackTime = 0;
+
     public NavMeshAgent agent;
 
     public Transform player;
@@ -59,6 +64,15 @@ public class EnemyAI : MonoBehaviour
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
+        }
+        if (alreadyAttacked)
+        {
+            attackTime += Time.deltaTime;
+            if(attackTime >= attackDuration)
+            {
+                alreadyAttacked = false;
+                attackTime = 0;
+            }
         }
     }
 
@@ -114,6 +128,23 @@ public class EnemyAI : MonoBehaviour
 
     private void ResetAttack()
     {
-        alreadyAttacked = false;
+        GetComponent<Rigidbody>().AddForce(transform.forward * impulsionForce, ForceMode.Impulse);
+        Debug.Log("attacked");
+        Debug.Log(transform.forward * impulsionForce);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (alreadyAttacked)
+        {
+            if (collision.gameObject.CompareTag("Player") && !SlimeInfos.RecoveringState)
+            {
+                SlimeInfos.healthPoint -= damages;
+                alreadyAttacked = false;
+                attackTime = 0;
+                SlimeInfos.RecoveringState = true;
+            }
+
+        }
     }
 }

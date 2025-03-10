@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+
+    [SerializeField]
+    private SlimeInfos slimeInfos;
+
+
     // Start is called before the first frame update
     void Start()
     {

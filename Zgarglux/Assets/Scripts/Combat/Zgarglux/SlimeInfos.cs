@@ -6,6 +6,8 @@ public class SlimeInfos : MonoBehaviour
 {
     public int healthPoint;
     public int MaxSplitNumber;
+    public float hurtRecoveryTime;
+    public bool RecoveringState = false;
 
     public GameObject activeSplit;
 

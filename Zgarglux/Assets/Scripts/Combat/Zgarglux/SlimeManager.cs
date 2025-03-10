@@ -12,6 +12,8 @@ public class SlimeManager : MonoBehaviour
     [SerializeField]
     private HealthBar healthBar;
 
+    private float recoveryTimer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,16 @@ public class SlimeManager : MonoBehaviour
             else
             {
                 split.SplitSlime(slimeInfos.activeSplit);
+            }
+        }
+
+        if (slimeInfos.RecoveringState)
+        {
+            recoveryTimer += Time.deltaTime;
+            if (recoveryTimer > slimeInfos.hurtRecoveryTime)
+            {
+                slimeInfos.RecoveringState = false;
+                recoveryTimer = 0;
             }
         }
         healthBar.hp = slimeInfos.healthPoint;
