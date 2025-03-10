@@ -12,7 +12,10 @@ TagManager:
   - Ground
   - Water
   - UI
+  - WhatIsGround
+  - WhatIsPlayer
   - CropTerrain
+  - 
   - 
   - 
   - 
