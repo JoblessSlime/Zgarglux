@@ -45,7 +45,7 @@ public class CropPlanting : MonoBehaviour
 
             if (currentTerrain == null || !currentTerrain.HasPlaceToPlant)
             {
-                Debug.Log("You already planted something there !");
+                Debug.Log("Can't plant here !");
                 return;
 
             }
