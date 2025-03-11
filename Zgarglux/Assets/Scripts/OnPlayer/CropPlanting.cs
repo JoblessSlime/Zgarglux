@@ -21,6 +21,9 @@ public class CropPlanting : MonoBehaviour
     public GameObject mushroomPrefab;
     public GameObject cornPrefab;
     public GameObject carrotPrefab;
+    public GameObject pumpkinPrefab;
+    public GameObject radishPrefab;
+    public GameObject tomatoPrefab;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -62,7 +65,7 @@ public class CropPlanting : MonoBehaviour
 
     private void PlantCrop()
     {
-        Instantiate(GetCropPrefab(selectedCrop), transform.position, Quaternion.identity);
+        Instantiate(GetCropPrefab(selectedCrop), currentTerrain.transform.position, Quaternion.identity);
         grainInventory[selectedCrop]--;
         Debug.Log($"Planted {selectedCrop}. Remaining grains: {grainInventory[selectedCrop]}");
 
@@ -100,6 +103,9 @@ public class CropPlanting : MonoBehaviour
         {
             case "Mushroom Plant": return mushroomPrefab;
             case "Corn Plant": return cornPrefab;
+            case "Pumpkin Plant": return pumpkinPrefab;
+            case "Radish Plant": return radishPrefab;
+            case "Tomato Plant": return tomatoPrefab;
             case "Carrot Plant": return carrotPrefab;
             default: return null;
         }
