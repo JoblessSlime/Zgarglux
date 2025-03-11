@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dca1ae3ce4fdbf42843c20b738a3d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cropType: Carrot Plant
   growthStages:
   - {fileID: 8734501386758709765}
   - {fileID: 4595576980418796405}

@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Crop : MonoBehaviour
-{
-
+{   
+    public string cropType; // Example: "Wheat", "Corn", "Carrot"
     public GameObject[] growthStages;
     private int currentStage = 0;
     private bool isFullyGrown = false;
 
     private void Start()
     {
+        
         StartCoroutine(GrowCrop());
     }
 
