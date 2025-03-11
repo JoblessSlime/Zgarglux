@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks;
     private bool alreadyAttacked;
+    private bool dealingDamages;
 
     // States
     public float sightRange, attackRange;
@@ -34,8 +35,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        player = SlimeInfos.activeSplit.transform;
-
         agent = GetComponent<NavMeshAgent>();
     }
     // Start is called before the first frame update
@@ -47,6 +46,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = SlimeInfos.activeSplit.transform;
+
         // Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -65,13 +66,14 @@ public class EnemyAI : MonoBehaviour
         {
             AttackPlayer();
         }
-        if (alreadyAttacked)
+        if (dealingDamages)
         {
             attackTime += Time.deltaTime;
             if(attackTime >= attackDuration)
             {
-                alreadyAttacked = false;
+                dealingDamages = false;
                 attackTime = 0;
+                alreadyAttacked = false;
             }
         }
     }
@@ -119,28 +121,30 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
+        Debug.Log(alreadyAttacked);
         if (!alreadyAttacked)
         {
-            alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            alreadyAttacked = true;
         }
     }
 
     private void ResetAttack()
     {
         GetComponent<Rigidbody>().AddForce(transform.forward * impulsionForce, ForceMode.Impulse);
-        Debug.Log("attacked");
-        Debug.Log(transform.forward * impulsionForce);
+        dealingDamages = true;
+        Debug.Log("enemyAttacked");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (alreadyAttacked)
+        if (dealingDamages)
         {
             if (collision.gameObject.CompareTag("Player") && !SlimeInfos.RecoveringState)
             {
                 SlimeInfos.healthPoint -= damages;
                 alreadyAttacked = false;
+                dealingDamages = false;
                 attackTime = 0;
                 SlimeInfos.RecoveringState = true;
             }

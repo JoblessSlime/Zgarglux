@@ -9,31 +9,24 @@ public class Split : MonoBehaviour
 
     public void SplitSlime(GameObject actualSlime)
     {
-        GameObject split1 = Instantiate(splitPrefab, actualSlime.transform.position, Quaternion.identity);
-        GameObject split2 = Instantiate(splitPrefab, actualSlime.transform.position, Quaternion.identity);
+        GameObject split1 = Instantiate(actualSlime, actualSlime.transform.position, Quaternion.identity);
+        GameObject split2 = Instantiate(actualSlime, actualSlime.transform.position, Quaternion.identity);
 
         slimeInfos.splits.Remove(actualSlime);
-
-        split1.GetComponent<HealthBar>().healthBar = actualSlime.GetComponent<HealthBar>().healthBar;
-        split2.GetComponent<HealthBar>().healthBar = actualSlime.GetComponent<HealthBar>().healthBar;
-
-        split1.GetComponent<SlimeManager>().slimeInfos = actualSlime.GetComponent<SlimeManager>().slimeInfos;
-        split2.GetComponent<SlimeManager>().slimeInfos = actualSlime.GetComponent<SlimeManager>().slimeInfos;
-        
-        split1.GetComponent<Split>().slimeInfos = actualSlime.GetComponent<Split>().slimeInfos;
-        split2.GetComponent<Split>().slimeInfos = actualSlime.GetComponent<Split>().slimeInfos;
-
-        split1.GetComponent<Split>().splitPrefab = actualSlime.GetComponent<Split>().splitPrefab;
-        split2.GetComponent<Split>().splitPrefab = actualSlime.GetComponent<Split>().splitPrefab;
-
-        Destroy(actualSlime);
 
         slimeInfos.splits.Add(split1);
         slimeInfos.splits.Add(split2);
 
-        split1.GetComponent<SplitAI>().AIisActive = false;
-        split1.transform.GetChild(2).gameObject.SetActive(true);
+        split2.GetComponent<SplitAI>().AIisActive = true;
+        split2.GetComponent<CharacterController>().enabled = false;
+        split2.GetComponent<Rigidbody>().isKinematic = false;
+        split2.GetComponent<Rigidbody>().mass = 1;
+
+        split2.transform.GetChild(2).gameObject.SetActive(false);
+
         slimeInfos.activeSplit = split1;
+
+        Destroy(actualSlime);
     }
 
     public void MergeSlime(GameObject split1, GameObject split2)
@@ -48,6 +41,7 @@ public class Split : MonoBehaviour
         merged.GetComponent<SplitAI>().AIisActive = false;
         merged.transform.GetChild(2).gameObject.SetActive(true);
         slimeInfos.activeSplit = merged;
+        slimeInfos.healthPoint = 100;
     }
 
     public void SwitchSplit()
