@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d168c0162d579834493612b46a8d2640, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4b36c441bb845d54da8140584792a574, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1632014602}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -959,13 +959,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9b634f3c6de1f4bbf83434b742a036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycleDuration: 10
-  transitionDuration: 2
+  cycleDuration: 20
   directionalLight: {fileID: 1632014602}
-  daySkybox: {fileID: 2100000, guid: d168c0162d579834493612b46a8d2640, type: 2}
-  nightSkybox: {fileID: 2100000, guid: 316dd87f0803a6a40b0cadf92da8605f, type: 2}
-  dayLightIntensity: 1
-  nightLightIntensity: 0.2
+  daySkybox: {fileID: 2100000, guid: 4b36c441bb845d54da8140584792a574, type: 2}
+  nightSkybox: {fileID: 2100000, guid: 59c456e46d692d245843ecf1283e6c48, type: 2}
 --- !u!4 &763293233
 Transform:
   m_ObjectHideFlags: 0
@@ -3336,9 +3333,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1632014603}
+  - {fileID: 1167298978}
   - {fileID: 763293233}
   - {fileID: 642738005}
   - {fileID: 2122863017}
   - {fileID: 163780512}
   - {fileID: 2250431}
-  - {fileID: 1167298978}

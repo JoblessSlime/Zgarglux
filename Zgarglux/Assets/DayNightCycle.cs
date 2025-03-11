@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
-    public float cycleDuration = 10f;
-    public float transitionDuration = 2f;
-    public Light directionalLight;
-    public Material daySkybox, nightSkybox;
-    public float dayLightIntensity = 1f;
-    public float nightLightIntensity = 0.2f;
+    public float cycleDuration = 10f; // Total time for one day or night
+    public Light directionalLight; // Assign your scene's main directional light
+    public Material daySkybox, nightSkybox; // Assign in Inspector
 
-
- 
     private bool isDay = true;
     private int dayCount = 1;
 
@@ -33,15 +26,15 @@ public class DayNightCycle : MonoBehaviour
         if (isDay)
         {
             RenderSettings.skybox = daySkybox;
-            directionalLight.intensity = 1f; 
+            directionalLight.intensity = 1f; // Bright light for day
             dayCount++;
         }
         else
         {
             RenderSettings.skybox = nightSkybox;
-            directionalLight.intensity = 0.2f; 
+            directionalLight.intensity = 0.2f; // Dim light for night
         }
 
-        DynamicGI.UpdateEnvironment(); 
+        DynamicGI.UpdateEnvironment(); // Update lighting
     }
 }
