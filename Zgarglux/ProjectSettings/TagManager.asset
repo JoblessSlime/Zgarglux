@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Crop
   - Enemy
+  - KillZone
   layers:
   - Default
   - TransparentFX

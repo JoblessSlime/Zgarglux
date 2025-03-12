@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0349633b3e2db9f43bab50f3bf12a622, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  seed: {fileID: 2614287536191870268, guid: 1b0085bbd3b95534aafbb30c38ac9d04, type: 3}
+  seed: {fileID: 4651161459272159279, guid: e259d062897ffd047bc869572ed2ca3e, type: 3}
   hp: 50
