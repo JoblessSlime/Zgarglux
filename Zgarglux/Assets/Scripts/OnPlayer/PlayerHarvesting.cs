@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerHarvesting : MonoBehaviour
 {
+    
+    public TextMeshProUGUI harvestedCropsText; 
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>
     {
         { "Mushroom Plant", 0 },
@@ -13,11 +16,12 @@ public class PlayerHarvesting : MonoBehaviour
         { "Pumpkin Plant", 0 },
         { "Radish Plant", 0 },
         { "Tomato Plant", 0 }
+
     };
 
     public Crop nearbyCrop;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Crop"))
         {
@@ -38,6 +42,12 @@ public class PlayerHarvesting : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateHarvestedCropsUI();
+
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && nearbyCrop != null && nearbyCrop.IsFullyGrown())
@@ -53,6 +63,7 @@ public class PlayerHarvesting : MonoBehaviour
         if (cropInventory.ContainsKey(cropType))
         {
             cropInventory[cropType]++;
+            UpdateHarvestedCropsUI();
             Debug.Log($"Harvested {cropType}. New count: {cropInventory[cropType]}");
         }
         else
@@ -62,5 +73,18 @@ public class PlayerHarvesting : MonoBehaviour
 
         Destroy(nearbyCrop.gameObject);
         nearbyCrop = null;
+    }
+    private void UpdateHarvestedCropsUI()
+    {
+        string cropsText = "Harvested Crops:\n";
+
+        // Loop through the dictionary and add each crop to the UI string
+        foreach (KeyValuePair<string, int> crop in cropInventory)
+        {
+            cropsText += crop.Key + ": " + crop.Value + "\n";
+        }
+
+        // Set the TMP Text to show the updated harvested crops
+        harvestedCropsText.text = cropsText;
     }
 }
