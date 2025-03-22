@@ -7,7 +7,13 @@ using TMPro;
 public class PlayerHarvesting : MonoBehaviour
 {
     
-    public TextMeshProUGUI harvestedCropsText; 
+    public TextMeshProUGUI mushroomCropsText;
+    public TextMeshProUGUI cornCropsText;
+    public TextMeshProUGUI carrotCropsText;
+    public TextMeshProUGUI pumpkinCropsText;
+    public TextMeshProUGUI radishCropsText;
+    public TextMeshProUGUI tomatoCropsText;
+    
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>
     {
         { "Mushroom Plant", 0 },
@@ -76,15 +82,13 @@ public class PlayerHarvesting : MonoBehaviour
     }
     private void UpdateHarvestedCropsUI()
     {
-        string cropsText = "Harvested Crops:\n";
 
-        // Loop through the dictionary and add each crop to the UI string
-        foreach (KeyValuePair<string, int> crop in cropInventory)
-        {
-            cropsText += crop.Key + ": " + crop.Value + "\n";
-        }
+        mushroomCropsText.text = ": " + cropInventory["Mushroom Plant"];
+        cornCropsText.text = ": " + cropInventory["Corn Plant"];
+        carrotCropsText.text = ": " + cropInventory["Carrot Plant"];
+        pumpkinCropsText.text = ": " + cropInventory["Pumpkin Plant"];
+        radishCropsText.text = ": " + cropInventory["Radish Plant"];
+        tomatoCropsText.text = ": " + cropInventory["Tomato Plant"];
 
-        // Set the TMP Text to show the updated harvested crops
-        harvestedCropsText.text = cropsText;
     }
 }
