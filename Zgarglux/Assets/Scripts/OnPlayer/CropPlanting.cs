@@ -24,6 +24,9 @@ public class CropPlanting : MonoBehaviour
     public GameObject pumpkinPrefab;
     public GameObject radishPrefab;
     public GameObject tomatoPrefab;
+    
+    public static event Action<int, string, string> EventOnCropPlanted;
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -75,6 +78,12 @@ public class CropPlanting : MonoBehaviour
         }
         
         currentTerrain.HasPlaceToPlant = false;
+        
+        if (EventOnCropPlanted != null)
+        {
+            EventOnCropPlanted.Invoke(1, "PlantCrops", selectedCrop);  // This triggers the event
+            Debug.Log("eventInvoked");
+        }
     }
 
     private bool HasGrain(string crop)

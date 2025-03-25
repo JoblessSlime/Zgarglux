@@ -10,6 +10,7 @@ public class Crop : MonoBehaviour
     private int currentStage = 0;
     private bool isFullyGrown = false;
 
+
     private void Start()
     {
         

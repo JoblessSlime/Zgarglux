@@ -13,6 +13,7 @@ public class PlayerHarvesting : MonoBehaviour
     public TextMeshProUGUI pumpkinCropsText;
     public TextMeshProUGUI radishCropsText;
     public TextMeshProUGUI tomatoCropsText;
+    public static event Action<int, string, string> EventOnCropHarvested;
     
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>
     {
@@ -75,6 +76,11 @@ public class PlayerHarvesting : MonoBehaviour
         else
         {
             Debug.LogWarning($"Unknown crop type: {cropType}");
+        }
+        if (EventOnCropHarvested != null)
+        {
+            EventOnCropHarvested.Invoke(1, "GrowCrops", cropType);  // This triggers the event
+            Debug.Log("eventInvoked");
         }
 
         Destroy(nearbyCrop.gameObject);

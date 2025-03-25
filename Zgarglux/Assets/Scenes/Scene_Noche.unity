@@ -2005,6 +2005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763293233}
   - component: {fileID: 763293232}
+  - component: {fileID: 763293234}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2043,6 +2044,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &763293234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763293231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0950bf1ef38a77e40b6e296972014cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questList: []
+  progress: 
+  totalNeeded: 04000000
+  isActiveQuest: 
+  questType: 
+  questState: 
+  type: []
+  questDescription: []
+  TMPActiveQuest: {fileID: 67625101}
+  MenuQuest1: {fileID: 0}
+  MenuQuestLayout: {fileID: 0}
 --- !u!1 &859618054
 GameObject:
   m_ObjectHideFlags: 0
