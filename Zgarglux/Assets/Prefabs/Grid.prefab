@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 699316062213211524}
   - component: {fileID: 7174081792112166817}
   - component: {fileID: 7074451975959344371}
-  - component: {fileID: 1702831373924527558}
   m_Layer: 3
   m_Name: 1st Floor
   m_TagString: Untagged
@@ -990,27 +989,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!65 &1702831373924527558
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5817041907096353690}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 10.247383, y: 1, z: 8.058686}
-  m_Center: {x: 7.001047, y: 0.5, z: -6.970657}
 --- !u!1 &6705409097964202802
 GameObject:
   m_ObjectHideFlags: 0

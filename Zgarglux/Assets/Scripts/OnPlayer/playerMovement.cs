@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -19,7 +20,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
         // Ground check
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        
 
         // Reset Y-velocity if grounded
         if (isGrounded && velocity.y < 0)
