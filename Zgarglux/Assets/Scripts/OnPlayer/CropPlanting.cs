@@ -76,14 +76,16 @@ public class CropPlanting : MonoBehaviour
         {
             SwitchToAvailableCrop();
         }
-        
-        currentTerrain.HasPlaceToPlant = false;
-        
+               
         if (EventOnCropPlanted != null)
         {
             EventOnCropPlanted.Invoke(1, "PlantCrops", selectedCrop);  // This triggers the event
             Debug.Log("eventInvoked");
         }
+        
+        currentTerrain.HasPlaceToPlant = false;
+        
+
     }
 
     private bool HasGrain(string crop)

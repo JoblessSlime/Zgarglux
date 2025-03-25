@@ -29,7 +29,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) )
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); 
         }

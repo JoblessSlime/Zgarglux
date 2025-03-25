@@ -67,6 +67,8 @@ public class QuestManager : MonoBehaviour
     {
         Quest activeQuest = SetActiveQuest();
         TMPActiveQuest.text = activeQuest.questDescription;
+        MenuQuest1.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = activeQuest.questDescription;
+        MenuQuest1.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = activeQuest.progress.ToString() + "/" + activeQuest.totalNeeded.ToString();
 
         // show progression of quest
     }
