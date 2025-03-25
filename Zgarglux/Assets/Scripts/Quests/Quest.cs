@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Quest : MonoBehaviour
 {
@@ -13,13 +14,13 @@ public class Quest : MonoBehaviour
         Won, Lost, Ongoing
     }
 
+    public string questDescription;
     public int progress, totalNeeded;
     public bool isActiveQuest;
     public questTypeEnum questType;
     public questStateEnum questState;
     public string type;
     // quest giver
-
 
     // Update is called once per frame
     void Update()
@@ -41,39 +42,39 @@ public class Quest : MonoBehaviour
             if(type == "any")
             {
                 progress += actionProgress;
-                return;
             }
             else if(type == actionType)
             {
                 progress += actionProgress;
             }
-            return;
         }
         else if (questType == questTypeEnum.GrowCrops && action == "GrowCrops")
         {
             if (type == "any")
             {
                 progress += actionProgress;
-                return;
             }
             else if (type == actionType)
             {
                 progress += actionProgress;
             }
-            return;
         }
         else if (questType == questTypeEnum.DefeatMonster && action == "DefeatMonster")
         {
             if (type == "any")
             {
                 progress += actionProgress;
-                return;
             }
             else if (type == actionType)
             {
                 progress += actionProgress;
             }
-            return;
+        }
+
+        if (progress >= totalNeeded)
+        {
+            isActiveQuest = false;
+            questState = questStateEnum.Won;
         }
     }
 }

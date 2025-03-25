@@ -6,7 +6,8 @@ using TMPro;
 
 public class PlayerHarvesting : MonoBehaviour
 {
-    
+    public static event Action<int, string, string> EventOnCropHarvested;
+
     public TextMeshProUGUI harvestedCropsText; 
     public Dictionary<string, int> cropInventory = new Dictionary<string, int>
     {
@@ -73,6 +74,12 @@ public class PlayerHarvesting : MonoBehaviour
 
         Destroy(nearbyCrop.gameObject);
         nearbyCrop = null;
+
+        if (EventOnCropHarvested != null)
+        {
+            EventOnCropHarvested.Invoke(1, "GrowCrops", cropType);  // This triggers the event
+            Debug.Log("eventInvoked");
+        }
     }
     private void UpdateHarvestedCropsUI()
     {

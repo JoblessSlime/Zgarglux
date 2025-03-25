@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CropPlanting : MonoBehaviour
 {
+    public static event Action<int, string, string> EventOnCropPlanted;
+
     public Dictionary<string, int> grainInventory = new Dictionary<string, int>
     {
         { "Mushroom Plant", 1 },
@@ -68,6 +71,12 @@ public class CropPlanting : MonoBehaviour
         Instantiate(GetCropPrefab(selectedCrop), currentTerrain.transform.position, Quaternion.identity);
         grainInventory[selectedCrop]--;
         Debug.Log($"Planted {selectedCrop}. Remaining grains: {grainInventory[selectedCrop]}");
+
+        if (EventOnCropPlanted != null)
+        {
+            EventOnCropPlanted.Invoke(1, "PlantCrops", selectedCrop);  // This triggers the event
+            Debug.Log("eventInvoked");
+        }
 
         if (grainInventory[selectedCrop] <= 0)
         {
